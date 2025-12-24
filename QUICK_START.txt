@@ -1,0 +1,60 @@
+============================================================
+  CUDA 作业快速开始指南
+============================================================
+
+第一步：阅读文档
+--------------
+1. 先看 HOMEWORK_README.md（5分钟）
+2. 再看 CUDA_IMPLEMENTATION_GUIDE.md（20分钟）
+3. 理解 CPU 版本算法（在 src/cmodel.cpp 523行）
+
+第二步：实现 CUDA kernel
+-----------------------
+编辑 src/mesh_distance.cu，填充 TODO 部分：
+1. 实现 computeMinDistanceKernel（核心）
+2. 实现 computeDistanceGPU（host函数）
+
+关键点：
+- 每个线程处理一个顶点
+- 使用共享内存做块级规约
+- 注意同步（__syncthreads）
+
+第三步：修改配置文件
+------------------
+1. CMakeLists.txt：添加 .cu 文件和 CUDA 属性
+2. src/cmodel.cpp：添加 GPU 函数声明和调用
+
+第四步：编译测试
+--------------
+cd build
+rm -rf *
+cmake ..
+make -j$(nproc)
+
+第五步：验证结果
+--------------
+# 运行并对比结果
+./bin/meshDistCPU --headless data/my-bunny.obj data/alien-animal.obj
+
+# 结果应该与CPU版本完全一致！
+
+第六步：性能测试
+--------------
+测试不同模型，记录性能：
+- 小模型：my-bunny.obj vs alien-animal.obj
+- 大模型：buddha.obj vs wheeler.obj
+
+第七步：优化（可选）
+------------------
+尝试不同的优化策略：
+- 调整 block size（256, 512, 1024）
+- 使用常量内存
+- Warp 级优化
+
+预期结果：
+- 基础实现：20-50x 加速
+- 优化版本：50-100x+ 加速
+
+============================================================
+有问题？参考 CUDA_IMPLEMENTATION_GUIDE.md 的详细说明
+============================================================

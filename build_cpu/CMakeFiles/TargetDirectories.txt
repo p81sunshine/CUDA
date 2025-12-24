@@ -1,0 +1,5 @@
+/home/jiaxingliu/workspace/gpuhw/build_cpu/CMakeFiles/rebuild_cache.dir
+/home/jiaxingliu/workspace/gpuhw/build_cpu/CMakeFiles/edit_cache.dir
+/home/jiaxingliu/workspace/gpuhw/build_cpu/CMakeFiles/copy_data.dir
+/home/jiaxingliu/workspace/gpuhw/build_cpu/CMakeFiles/copy_imgui.dir
+/home/jiaxingliu/workspace/gpuhw/build_cpu/CMakeFiles/meshDistCPU.dir
